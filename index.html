@@ -325,7 +325,7 @@
         }
 
 
-        .about-card:hover, .about-card.touch-active {
+        .about-card:hover {
             transform: rotate(0) scale(1.02) !important; /* Override inline style */
             box-shadow: 12px 12px 0 var(--electric-blue);
         }
@@ -448,7 +448,7 @@
             transition-delay: 0s !important;
         }
 
-        .clay-card:active, .clay-card.touch-active {
+        .clay-card:active {
             transform: translate(8px, 8px);
             box-shadow: 0px 0px 0px var(--dark-bg);
         }
@@ -516,7 +516,7 @@
             justify-content: space-between;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-         .playground-card:hover, .playground-card.touch-active {
+         .playground-card:hover {
             transform: translateY(-10px);
             box-shadow: 10px 20px 0px var(--electric-blue);
         }
@@ -641,7 +641,7 @@
             aspect-ratio: 3 / 2;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-         .showcase-item:hover, .showcase-item.touch-active {
+         .showcase-item:hover {
             transform: scale(1.05) !important; /* Override inline rotate */
             box-shadow: 12px 12px 0 var(--electric-blue);
         }
@@ -733,6 +733,52 @@
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
+    <!-- Main Header -->
+    <header id="main-header" class="p-4 md:p-6 absolute top-0 left-0 w-full z-50">
+        <div class="container mx-auto flex justify-between items-center md:relative">
+            <a href="#" class="block header-logo -translate-y-0.5">
+                <img src="https://i.postimg.cc/vBqmNX0n/Noyo-Spark-logo.png" alt="NOYOSPARK Logo" class="h-8 md:h-10">
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 md:absolute md:left-1/2 md:top-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2">
+                <a href="#about" class="font-semibold hover:text-electric-blue transition-colors">About</a>
+                <a href="#how" class="font-semibold hover:text-electric-blue transition-colors">Process</a>
+                <a href="#showcase" class="font-semibold hover:text-electric-blue transition-colors">Showcase</a>
+                <a href="#contact" class="font-semibold hover:text-electric-blue transition-colors">Contact</a>
+            </nav>
+            <div class="hidden md:block">
+                <a href="#contact" class="btn-funky">Let's Talk</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-toggle-btn" class="menu-toggle-btn z-[10001] relative">
+                    <span class="line1"></span>
+                    <span class="line2"></span>
+                    <span class="line3"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sticky Header -->
+    <header id="sticky-header" class="sticky-header p-4">
+        <div class="container mx-auto flex justify-between items-center md:relative">
+            <a href="#" class="block -translate-y-0.5">
+                <img src="https://i.postimg.cc/vBqmNX0n/Noyo-Spark-logo.png" alt="NOYOSPARK Logo" class="h-8 md:h-10">
+            </a>
+            <nav class="hidden md:flex items-center space-x-6 md:absolute md:left-1/2 md:top-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2">
+                <a href="#about" class="font-semibold hover:text-electric-blue transition-colors">About</a>
+                <a href="#how" class="font-semibold hover:text-electric-blue transition-colors">Process</a>
+                <a href="#showcase" class="font-semibold hover:text-electric-blue transition-colors">Showcase</a>
+                <a href="#contact" class="font-semibold hover:text-electric-blue transition-colors">Contact</a>
+            </nav>
+            <div class="hidden md:block">
+                <a href="#contact" class="btn-funky">Get Started</a>
+            </div>
+             <!-- Mobile Menu Button (already handled by main toggle) -->
+            <div class="md:hidden h-[29px]"></div>
+        </div>
+    </header>
+
     <!-- Mobile Menu Panel -->
     <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full z-[10000] transform -translate-y-full">
         <div class="flex flex-col items-center justify-center h-full space-y-8">
@@ -743,465 +789,416 @@
         </div>
     </div>
 
-    <!-- Page Wrapper for Overflow Control -->
-    <div class="overflow-x-hidden">
-        <!-- Main Header -->
-        <header id="main-header" class="p-4 md:p-6 absolute top-0 left-0 w-full z-50">
-            <div class="container mx-auto flex justify-between items-center md:relative">
-                <a href="#" class="block header-logo -translate-y-0.5">
-                    <img src="https://i.postimg.cc/vBqmNX0n/Noyo-Spark-logo.png" alt="NOYOSPARK Logo" class="h-8 md:h-10">
-                </a>
-                <nav class="hidden md:flex items-center space-x-8 md:absolute md:left-1/2 md:top-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2">
-                    <a href="#about" class="font-semibold hover:text-electric-blue transition-colors">About</a>
-                    <a href="#how" class="font-semibold hover:text-electric-blue transition-colors">Process</a>
-                    <a href="#showcase" class="font-semibold hover:text-electric-blue transition-colors">Showcase</a>
-                    <a href="#contact" class="font-semibold hover:text-electric-blue transition-colors">Contact</a>
-                </nav>
-                <div class="hidden md:block">
-                    <a href="#contact" class="btn-funky">Let's Talk</a>
-                </div>
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="menu-toggle-btn" class="menu-toggle-btn z-[10001] relative">
-                        <span class="line1"></span>
-                        <span class="line2"></span>
-                        <span class="line3"></span>
-                    </button>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="blob blob1"></div>
+            <div class="blob blob2"></div>
+            <div class="mt-16 md:mt-0 text-center relative z-10 px-4">
+                <h1 class="hero-title text-[44px] leading-tight sm:text-6xl md:text-7xl lg:text-8xl font-paytone uppercase flex flex-col justify-center h-[120px] sm:h-[140px] md:h-[210px] lg:h-[240px]">
+                    <!-- Animated text injected here -->
+                </h1>
+                <p class="mt-6 text-base md:text-xl max-w-2xl mx-auto reveal">
+                    We're an AI-powered creative studio that builds unforgettable brands. From viral reels to iconic logos, we make your brand impossible to ignore.
+                </p>
+                <div class="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
+                    <a href="#showcase" class="btn-funky text-base md:text-lg w-full sm:w-auto">See The Magic</a>
+                    <a href="#contact" class="btn-funky text-base md:text-lg w-full sm:w-auto">Let's Get Weird</a>
                 </div>
             </div>
-        </header>
-
-        <!-- Sticky Header -->
-        <header id="sticky-header" class="sticky-header p-4">
-            <div class="container mx-auto flex justify-between items-center md:relative">
-                <a href="#" class="block -translate-y-0.5">
-                    <img src="https://i.postimg.cc/vBqmNX0n/Noyo-Spark-logo.png" alt="NOYOSPARK Logo" class="h-8 md:h-10">
-                </a>
-                <nav class="hidden md:flex items-center space-x-6 md:absolute md:left-1/2 md:top-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2">
-                    <a href="#about" class="font-semibold hover:text-electric-blue transition-colors">About</a>
-                    <a href="#how" class="font-semibold hover:text-electric-blue transition-colors">Process</a>
-                    <a href="#showcase" class="font-semibold hover:text-electric-blue transition-colors">Showcase</a>
-                    <a href="#contact" class="font-semibold hover:text-electric-blue transition-colors">Contact</a>
-                </nav>
-                <div class="hidden md:block">
-                    <a href="#contact" class="btn-funky">Get Started</a>
-                </div>
-                 <!-- Mobile Menu Button (already handled by main toggle) -->
-                <div class="md:hidden h-[29px]"></div>
-            </div>
-        </header>
-
-        <main>
-            <!-- Hero Section -->
-            <section id="hero">
-                <div class="blob blob1"></div>
-                <div class="blob blob2"></div>
-                <div class="mt-16 md:mt-0 text-center relative z-10 px-4">
-                    <h1 class="hero-title text-[44px] leading-tight sm:text-6xl md:text-7xl lg:text-8xl font-paytone uppercase flex flex-col justify-center h-[120px] sm:h-[140px] md:h-[210px] lg:h-[240px]">
-                        <!-- Animated text injected here -->
-                    </h1>
-                    <p class="mt-6 text-base md:text-xl max-w-2xl mx-auto reveal">
-                        We're an AI-powered creative studio that builds unforgettable brands. From viral reels to iconic logos, we make your brand impossible to ignore.
-                    </p>
-                    <div class="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
-                        <a href="#showcase" class="btn-funky text-base md:text-lg w-full sm:w-auto">See The Magic</a>
-                        <a href="#contact" class="btn-funky text-base md:text-lg w-full sm:w-auto">Let's Get Weird</a>
-                    </div>
-                </div>
-                
-                <div class="absolute bottom-10 left-1/2 bouncy-arrow hidden md:block">
-                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-bg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                      </svg>
-                </div>
-            </section>
             
-            <!-- Marquee Section -->
-            <section class="marquee-section">
-                <div class="marquee">
-                    <div class="marquee-content">
-                        <span>CREATE</span> ✨ <span>INNOVATE</span> 🚀 <span>DOMINATE</span> 👑 <span>REPEAT</span> repeat <span>CREATE</span> ✨ <span>INNOVATE</span> 🚀 <span>DOMINATE</span> 👑 <span>REPEAT</span>
-                    </div>
+            <div class="absolute bottom-10 left-1/2 bouncy-arrow hidden md:block">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-bg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+            </div>
+        </section>
+        
+        <!-- Marquee Section -->
+        <section class="marquee-section">
+            <div class="marquee">
+                <div class="marquee-content">
+                    <span>CREATE</span> ✨ <span>INNOVATE</span> 🚀 <span>DOMINATE</span> 👑 <span>REPEAT</span> repeat <span>CREATE</span> ✨ <span>INNOVATE</span> 🚀 <span>DOMINATE</span> 👑 <span>REPEAT</span>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- About Us Section -->
-            <section id="about" class="py-16 md:py-20 px-4">
-                <div class="container mx-auto max-w-5xl text-center reveal">
-                    <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-4">WE'RE NOT YOUR AVERAGE CREATIVE AGENCY.</h2>
-                    <p class="text-base md:text-lg mb-12">We're a crew of creatives, tech nerds, and strategists using AI to build brands that actually slap.</p>
-                </div>
-                <div class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center">
-                    <div class="comic-slide-left">
-                        <div id="mission-card" class="about-card" style="transform: rotate(-3deg);">
-                            <h3 class="text-2xl md:text-3xl font-paytone mb-4">OUR MISSION</h3>
-                            <p class="text-base">To kill boring content, one AI-powered masterpiece at a time. We're here to inject the internet with creative that's got personality, sparks conversation, and makes your competitors jealous.</p>
-                        </div>
-                    </div>
-                     <div class="comic-slide-right mt-8 md:mt-0">
-                        <div id="vision-card" class="about-card" style="transform: rotate(2deg);">
-                            <h3 class="text-2xl md:text-3xl font-paytone mb-4">OUR VISION</h3>
-                            <p class="text-base">To be the go-to name for brands that want to break the mold. We see a future where content isn't skipped—it's shared, loved, and celebrated. And we're building it with AI.</p>
-                        </div>
+        <!-- About Us Section -->
+        <section id="about" class="py-16 md:py-20 px-4">
+            <div class="container mx-auto max-w-5xl text-center reveal">
+                <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-4">WE'RE NOT YOUR AVERAGE CREATIVE AGENCY.</h2>
+                <p class="text-base md:text-lg mb-12">We're a crew of creatives, tech nerds, and strategists using AI to build brands that actually slap.</p>
+            </div>
+            <div class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center">
+                <div class="comic-slide-left">
+                    <div id="mission-card" class="about-card" style="transform: rotate(-3deg);">
+                        <h3 class="text-2xl md:text-3xl font-paytone mb-4">OUR MISSION</h3>
+                        <p class="text-base">To kill boring content, one AI-powered masterpiece at a time. We're here to inject the internet with creative that's got personality, sparks conversation, and makes your competitors jealous.</p>
                     </div>
                 </div>
-            </section>
+                 <div class="comic-slide-right mt-8 md:mt-0">
+                    <div id="vision-card" class="about-card" style="transform: rotate(2deg);">
+                        <h3 class="text-2xl md:text-3xl font-paytone mb-4">OUR VISION</h3>
+                        <p class="text-base">To be the go-to name for brands that want to break the mold. We see a future where content isn't skipped—it's shared, loved, and celebrated. And we're building it with AI.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <!-- How It Works Section -->
-            <section id="how" class="py-20 md:py-24 px-4">
-                <div class="container mx-auto text-center">
-                    <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-12 md:mb-16 reveal">HOW WE COOK UP THE MAGIC</h2>
-                    <div class="grid md:grid-cols-3 gap-10 md:gap-12 max-w-6xl mx-auto">
-                        <div class="text-center reveal">
-                            <div class="sticker-number mx-auto mb-6"> <span class="number">1</span> </div>
-                            <h3 class="text-xl md:text-2xl font-bold mb-2">VIBE CHECK</h3>
-                            <p class="text-sm md:text-base">You tell us your brand's story, goals, and wildest dreams. We listen, brainstorm, and sync up on a killer creative direction.</p>
-                        </div>
-                        <div class="text-center reveal" style="transition-delay: 0.2s;">
-                             <div class="sticker-number mx-auto mb-6"> <span class="number">2</span> </div>
-                            <h3 class="text-xl md:text-2xl font-bold mb-2">AI WIZARDRY</h3>
-                            <p class="text-sm md:text-base">Our team fires up the AI engines. We generate scripts, visuals, and storyboards at lightning speed, exploring hundreds of creative options in minutes.</p>
-                        </div>
-                        <div class="text-center reveal" style="transition-delay: 0.4s;">
-                            <div class="sticker-number mx-auto mb-6"> <span class="number">3</span> </div>
-                            <h3 class="text-xl md:text-2xl font-bold mb-2">HUMAN TOUCH</h3>
-                            <p class="text-sm md:text-base">This ain't just robots. Our creative directors polish the best AI concepts, adding the strategy and nuance to create the final, mind-blowing creative.</p>
-                        </div>
+        <!-- How It Works Section -->
+        <section id="how" class="py-20 md:py-24 px-4">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-12 md:mb-16 reveal">HOW WE COOK UP THE MAGIC</h2>
+                <div class="grid md:grid-cols-3 gap-10 md:gap-12 max-w-6xl mx-auto">
+                    <div class="text-center reveal">
+                        <div class="sticker-number mx-auto mb-6"> <span class="number">1</span> </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">VIBE CHECK</h3>
+                        <p class="text-sm md:text-base">You tell us your brand's story, goals, and wildest dreams. We listen, brainstorm, and sync up on a killer creative direction.</p>
+                    </div>
+                    <div class="text-center reveal" style="transition-delay: 0.2s;">
+                         <div class="sticker-number mx-auto mb-6"> <span class="number">2</span> </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">AI WIZARDRY</h3>
+                        <p class="text-sm md:text-base">Our team fires up the AI engines. We generate scripts, visuals, and storyboards at lightning speed, exploring hundreds of creative options in minutes.</p>
+                    </div>
+                    <div class="text-center reveal" style="transition-delay: 0.4s;">
+                        <div class="sticker-number mx-auto mb-6"> <span class="number">3</span> </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">HUMAN TOUCH</h3>
+                        <p class="text-sm md:text-base">This ain't just robots. Our creative directors polish the best AI concepts, adding the strategy and nuance to create the final, mind-blowing creative.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Secret Sauce Section -->
-            <section id="sauce" class="py-20 md:py-24 px-4 md:px-0 overflow-hidden">
-                <div class="container mx-auto text-center">
-                    <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-12 md:mb-16 reveal">THE SECRET SAUCE</h2>
-                    
-                    <!-- Mobile Slider -->
-                    <div class="md:hidden">
-                        <div class="sauce-slider-container">
-                            <div class="sauce-slider-track">
-                                <div class="clay-card reveal">
-                                    <div class="card-icon mb-4">⚡️</div> <h3 class="text-xl font-bold mb-2">HYPER-SPEED</h3>
-                                    <p class="text-sm">Go from idea to finished creative in days, not months. The AI does the heavy lifting so we can focus on creative excellence.</p>
-                                </div>
-                                <div class="clay-card reveal">
-                                    <div class="card-icon mb-4">🧪</div> <h3 class="text-xl font-bold mb-2">ENDLESS OPTIONS</h3>
-                                    <p class="text-sm">Test dozens of hooks, visuals, and CTAs to find the perfect combination that makes your audience click. A/B testing on steroids.</p>
-                                </div>
-                                <div class="clay-card reveal">
-                                    <div class="card-icon mb-4">📈</div> <h3 class="text-xl font-bold mb-2">DATA-DRIVEN</h3>
-                                    <p class="text-sm">We use AI to analyze trends and predict performance, so your creative isn't just cool—it's scientifically engineered to convert.</p>
-                                </div>
-                                <div class="clay-card reveal">
-                                    <div class="card-icon mb-4">🎨</div> <h3 class="text-xl font-bold mb-2">NEXT-LEVEL VISUALS</h3>
-                                    <p class="text-sm">Access impossible camera angles, stunning VFX, and art styles you've only dreamed of. If you can imagine it, our AI can create it.</p>
-                                </div>
-                                <div class="clay-card reveal">
-                                    <div class="card-icon mb-4">💰</div> <h3 class="text-xl font-bold mb-2">BUDGET-FRIENDLY</h3>
-                                    <p class="text-sm">Get Hollywood-level production value without the Hollywood-level price tag. No expensive shoots, actors, or locations needed.</p>
-                                </div>
-                                <div class="clay-card reveal">
-                                    <div class="card-icon mb-4">👽</div> <h3 class="text-xl font-bold mb-2">WEIRDLY WONDERFUL</h3>
-                                    <p class="text-sm">Our AI thinks outside the box, generating unique and unexpected ideas that will make your brand stand out from the noise.</p>
-                                </div>
+        <!-- Secret Sauce Section -->
+        <section id="sauce" class="py-20 md:py-24 px-4 md:px-0 overflow-hidden">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-12 md:mb-16 reveal">THE SECRET SAUCE</h2>
+                
+                <!-- Mobile Slider -->
+                <div class="md:hidden">
+                    <div class="sauce-slider-container">
+                        <div class="sauce-slider-track">
+                            <div class="clay-card reveal">
+                                <div class="card-icon mb-4">⚡️</div> <h3 class="text-xl font-bold mb-2">HYPER-SPEED</h3>
+                                <p class="text-sm">Go from idea to finished creative in days, not months. The AI does the heavy lifting so we can focus on creative excellence.</p>
+                            </div>
+                            <div class="clay-card reveal">
+                                <div class="card-icon mb-4">🧪</div> <h3 class="text-xl font-bold mb-2">ENDLESS OPTIONS</h3>
+                                <p class="text-sm">Test dozens of hooks, visuals, and CTAs to find the perfect combination that makes your audience click. A/B testing on steroids.</p>
+                            </div>
+                            <div class="clay-card reveal">
+                                <div class="card-icon mb-4">📈</div> <h3 class="text-xl font-bold mb-2">DATA-DRIVEN</h3>
+                                <p class="text-sm">We use AI to analyze trends and predict performance, so your creative isn't just cool—it's scientifically engineered to convert.</p>
+                            </div>
+                            <div class="clay-card reveal">
+                                <div class="card-icon mb-4">🎨</div> <h3 class="text-xl font-bold mb-2">NEXT-LEVEL VISUALS</h3>
+                                <p class="text-sm">Access impossible camera angles, stunning VFX, and art styles you've only dreamed of. If you can imagine it, our AI can create it.</p>
+                            </div>
+                            <div class="clay-card reveal">
+                                <div class="card-icon mb-4">💰</div> <h3 class="text-xl font-bold mb-2">BUDGET-FRIENDLY</h3>
+                                <p class="text-sm">Get Hollywood-level production value without the Hollywood-level price tag. No expensive shoots, actors, or locations needed.</p>
+                            </div>
+                            <div class="clay-card reveal">
+                                <div class="card-icon mb-4">👽</div> <h3 class="text-xl font-bold mb-2">WEIRDLY WONDERFUL</h3>
+                                <p class="text-sm">Our AI thinks outside the box, generating unique and unexpected ideas that will make your brand stand out from the noise.</p>
                             </div>
                         </div>
-                        <div class="sauce-dots"></div>
                     </div>
+                    <div class="sauce-dots"></div>
+                </div>
 
-                    <!-- Desktop Grid -->
-                    <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        <div class="clay-card reveal">
-                            <div class="card-icon mb-4">⚡️</div> <h3 class="text-xl md:text-2xl font-bold mb-2">HYPER-SPEED</h3>
-                            <p class="text-sm md:text-base">Go from idea to finished creative in days, not months. The AI does the heavy lifting so we can focus on creative excellence.</p>
-                        </div>
-                        <div class="clay-card reveal" style="transition-delay: 0.1s;">
-                            <div class="card-icon mb-4">🧪</div> <h3 class="text-xl md:text-2xl font-bold mb-2">ENDLESS OPTIONS</h3>
-                            <p class="text-sm md:text-base">Test dozens of hooks, visuals, and CTAs to find the perfect combination that makes your audience click. A/B testing on steroids.</p>
-                        </div>
-                        <div class="clay-card reveal" style="transition-delay: 0.2s;">
-                            <div class="card-icon mb-4">📈</div> <h3 class="text-xl md:text-2xl font-bold mb-2">DATA-DRIVEN</h3>
-                            <p class="text-sm md:text-base">We use AI to analyze trends and predict performance, so your creative isn't just cool—it's scientifically engineered to convert.</p>
-                        </div>
-                        <div class="clay-card reveal" style="transition-delay: 0.3s;">
-                            <div class="card-icon mb-4">🎨</div> <h3 class="text-xl md:text-2xl font-bold mb-2">NEXT-LEVEL VISUALS</h3>
-                            <p class="text-sm md:text-base">Access impossible camera angles, stunning VFX, and art styles you've only dreamed of. If you can imagine it, our AI can create it.</p>
-                        </div>
-                        <div class="clay-card reveal" style="transition-delay: 0.4s;">
-                            <div class="card-icon mb-4">💰</div> <h3 class="text-xl md:text-2xl font-bold mb-2">BUDGET-FRIENDLY</h3>
-                            <p class="text-sm md:text-base">Get Hollywood-level production value without the Hollywood-level price tag. No expensive shoots, actors, or locations needed.</p>
-                        </div>
-                        <div class="clay-card reveal" style="transition-delay: 0.5s;">
-                            <div class="card-icon mb-4">👽</div> <h3 class="text-xl md:text-2xl font-bold mb-2">WEIRDLY WONDERFUL</h3>
-                            <p class="text-sm md:text-base">Our AI thinks outside the box, generating unique and unexpected ideas that will make your brand stand out from the noise.</p>
-                        </div>
+                <!-- Desktop Grid -->
+                <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="clay-card reveal">
+                        <div class="card-icon mb-4">⚡️</div> <h3 class="text-xl md:text-2xl font-bold mb-2">HYPER-SPEED</h3>
+                        <p class="text-sm md:text-base">Go from idea to finished creative in days, not months. The AI does the heavy lifting so we can focus on creative excellence.</p>
+                    </div>
+                    <div class="clay-card reveal" style="transition-delay: 0.1s;">
+                        <div class="card-icon mb-4">🧪</div> <h3 class="text-xl md:text-2xl font-bold mb-2">ENDLESS OPTIONS</h3>
+                        <p class="text-sm md:text-base">Test dozens of hooks, visuals, and CTAs to find the perfect combination that makes your audience click. A/B testing on steroids.</p>
+                    </div>
+                    <div class="clay-card reveal" style="transition-delay: 0.2s;">
+                        <div class="card-icon mb-4">📈</div> <h3 class="text-xl md:text-2xl font-bold mb-2">DATA-DRIVEN</h3>
+                        <p class="text-sm md:text-base">We use AI to analyze trends and predict performance, so your creative isn't just cool—it's scientifically engineered to convert.</p>
+                    </div>
+                    <div class="clay-card reveal" style="transition-delay: 0.3s;">
+                        <div class="card-icon mb-4">🎨</div> <h3 class="text-xl md:text-2xl font-bold mb-2">NEXT-LEVEL VISUALS</h3>
+                        <p class="text-sm md:text-base">Access impossible camera angles, stunning VFX, and art styles you've only dreamed of. If you can imagine it, our AI can create it.</p>
+                    </div>
+                    <div class="clay-card reveal" style="transition-delay: 0.4s;">
+                        <div class="card-icon mb-4">💰</div> <h3 class="text-xl md:text-2xl font-bold mb-2">BUDGET-FRIENDLY</h3>
+                        <p class="text-sm md:text-base">Get Hollywood-level production value without the Hollywood-level price tag. No expensive shoots, actors, or locations needed.</p>
+                    </div>
+                    <div class="clay-card reveal" style="transition-delay: 0.5s;">
+                        <div class="card-icon mb-4">👽</div> <h3 class="text-xl md:text-2xl font-bold mb-2">WEIRDLY WONDERFUL</h3>
+                        <p class="text-sm md:text-base">Our AI thinks outside the box, generating unique and unexpected ideas that will make your brand stand out from the noise.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Playground Section -->
-            <div id="playground-container">
-                <section id="playground" class="px-4">
-                    <div class="container mx-auto">
-                        <div class="text-center mb-12">
-                             <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-4 reveal">OUR PLAYGROUND</h2>
-                             <p class="text-base md:text-lg max-w-2xl mx-auto reveal">This is where the magic happens. We cook up all sorts of creative goodness. Take a peek.</p>
+        <!-- Playground Section -->
+        <div id="playground-container">
+            <section id="playground" class="px-4">
+                <div class="container mx-auto">
+                    <div class="text-center mb-12">
+                         <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-4 reveal">OUR PLAYGROUND</h2>
+                         <p class="text-base md:text-lg max-w-2xl mx-auto reveal">This is where the magic happens. We cook up all sorts of creative goodness. Take a peek.</p>
+                    </div>
+
+                    <!-- Desktop: Horizontal Scroll -->
+                    <div class="horizontal-scroll-content hidden lg:flex">
+                        <div class="playground-card">
+                            <div class="playground-icon">🎬</div> <h3 class="font-paytone playground-title">VIRAL REELS & SHORTS</h3>
+                            <p>Thumb-stopping short-form video content designed for TikTok, Reels, and Shorts that gets views and builds community.</p>
                         </div>
-
-                        <!-- Desktop: Horizontal Scroll -->
-                        <div class="horizontal-scroll-content hidden lg:flex">
-                            <div class="playground-card">
-                                <div class="playground-icon">🎬</div> <h3 class="font-paytone playground-title">VIRAL REELS & SHORTS</h3>
+                        <div class="playground-card">
+                            <div class="playground-icon">✨</div> <h3 class="font-paytone playground-title">BRAND IDENTITIES</h3>
+                            <p>From logos to brand guidelines, we build cohesive, memorable brand worlds that connect with your audience on a deeper level.</p>
+                        </div>
+                        <div class="playground-card">
+                            <div class="playground-icon">🤖</div> <h3 class="font-paytone playground-title">AI AVATARS & INFLUENCERS</h3>
+                            <p>Create a unique digital personality for your brand. Perfect for tutorials, social media, and virtual events.</p>
+                        </div>
+                        <div class="playground-card">
+                            <div class="playground-icon">🎯</div> <h3 class="font-paytone playground-title">MARKETING STRATEGY</h3>
+                            <p>We use AI-driven insights to craft killer marketing strategies that ensure your creative hits the right people, at the right time.</p>
+                        </div>
+                        <div class="playground-card">
+                            <div class="playground-icon">📸</div> <h3 class="font-paytone playground-title">AR FILTERS & LENSES</h3>
+                            <p>Engaging, interactive experiences for Instagram and Snapchat that put your audience right inside your brand's story.</p>
+                        </div>
+                        <div class="playground-card">
+                            <div class="playground-icon">🧠</div> <h3 class="font-paytone playground-title">AND SO MUCH MORE</h3>
+                            <p>Got a weird, wild, or wonderful idea? The chances are our AI can help bring it to life. Let's chat about it!</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile: Accordion -->
+                    <div class="playground-accordion lg:hidden space-y-4">
+                        <div class="playground-accordion-item">
+                            <button class="playground-accordion-trigger">
+                                <span class="flex items-center text-left">
+                                    <span class="playground-icon mr-4">🎬</span>
+                                    <span class="font-paytone playground-title">VIRAL REELS & SHORTS</span>
+                                </span>
+                                <svg class="chevron w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                            </button>
+                            <div class="playground-accordion-content">
                                 <p>Thumb-stopping short-form video content designed for TikTok, Reels, and Shorts that gets views and builds community.</p>
                             </div>
-                            <div class="playground-card">
-                                <div class="playground-icon">✨</div> <h3 class="font-paytone playground-title">BRAND IDENTITIES</h3>
+                        </div>
+                         <div class="playground-accordion-item">
+                            <button class="playground-accordion-trigger">
+                                <span class="flex items-center text-left">
+                                    <span class="playground-icon mr-4">✨</span>
+                                    <span class="font-paytone playground-title">BRAND IDENTITIES</span>
+                                </span>
+                                <svg class="chevron w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                            </button>
+                            <div class="playground-accordion-content">
                                 <p>From logos to brand guidelines, we build cohesive, memorable brand worlds that connect with your audience on a deeper level.</p>
                             </div>
-                            <div class="playground-card">
-                                <div class="playground-icon">🤖</div> <h3 class="font-paytone playground-title">AI AVATARS & INFLUENCERS</h3>
+                        </div>
+                        <div class="playground-accordion-item">
+                            <button class="playground-accordion-trigger">
+                                <span class="flex items-center text-left">
+                                    <span class="playground-icon mr-4">🤖</span>
+                                    <span class="font-paytone playground-title">AI AVATARS & INFLUENCERS</span>
+                                </span>
+                                <svg class="chevron w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                            </button>
+                            <div class="playground-accordion-content">
                                 <p>Create a unique digital personality for your brand. Perfect for tutorials, social media, and virtual events.</p>
                             </div>
-                            <div class="playground-card">
-                                <div class="playground-icon">🎯</div> <h3 class="font-paytone playground-title">MARKETING STRATEGY</h3>
+                        </div>
+                        <div class="playground-accordion-item">
+                            <button class="playground-accordion-trigger">
+                                <span class="flex items-center text-left">
+                                    <span class="playground-icon mr-4">🎯</span>
+                                    <span class="font-paytone playground-title">MARKETING STRATEGY</span>
+                                </span>
+                                <svg class="chevron w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                            </button>
+                            <div class="playground-accordion-content">
                                 <p>We use AI-driven insights to craft killer marketing strategies that ensure your creative hits the right people, at the right time.</p>
                             </div>
-                            <div class="playground-card">
-                                <div class="playground-icon">📸</div> <h3 class="font-paytone playground-title">AR FILTERS & LENSES</h3>
+                        </div>
+                         <div class="playground-accordion-item">
+                            <button class="playground-accordion-trigger">
+                                <span class="flex items-center text-left">
+                                    <span class="playground-icon mr-4">📸</span>
+                                    <span class="font-paytone playground-title">AR FILTERS & LENSES</span>
+                                </span>
+                                <svg class="chevron w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                            </button>
+                            <div class="playground-accordion-content">
                                 <p>Engaging, interactive experiences for Instagram and Snapchat that put your audience right inside your brand's story.</p>
                             </div>
-                            <div class="playground-card">
-                                <div class="playground-icon">🧠</div> <h3 class="font-paytone playground-title">AND SO MUCH MORE</h3>
+                        </div>
+                        <div class="playground-accordion-item">
+                            <button class="playground-accordion-trigger">
+                                <span class="flex items-center text-left">
+                                    <span class="playground-icon mr-4">🧠</span>
+                                    <span class="font-paytone playground-title">AND SO MUCH MORE</span>
+                                </span>
+                                <svg class="chevron w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                            </button>
+                            <div class="playground-accordion-content">
                                 <p>Got a weird, wild, or wonderful idea? The chances are our AI can help bring it to life. Let's chat about it!</p>
                             </div>
                         </div>
-                        
-                        <!-- Mobile: Accordion -->
-                        <div class="playground-accordion lg:hidden space-y-4">
-                            <div class="playground-accordion-item">
-                                <button class="playground-accordion-trigger">
-                                    <span class="flex items-center text-left">
-                                        <span class="playground-icon mr-4">🎬</span>
-                                        <span class="font-paytone playground-title">VIRAL REELS & SHORTS</span>
-                                    </span>
-                                    <svg class="chevron w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
-                                </button>
-                                <div class="playground-accordion-content">
-                                    <p>Thumb-stopping short-form video content designed for TikTok, Reels, and Shorts that gets views and builds community.</p>
-                                </div>
-                            </div>
-                             <div class="playground-accordion-item">
-                                <button class="playground-accordion-trigger">
-                                    <span class="flex items-center text-left">
-                                        <span class="playground-icon mr-4">✨</span>
-                                        <span class="font-paytone playground-title">BRAND IDENTITIES</span>
-                                    </span>
-                                    <svg class="chevron w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
-                                </button>
-                                <div class="playground-accordion-content">
-                                    <p>From logos to brand guidelines, we build cohesive, memorable brand worlds that connect with your audience on a deeper level.</p>
-                                </div>
-                            </div>
-                            <div class="playground-accordion-item">
-                                <button class="playground-accordion-trigger">
-                                    <span class="flex items-center text-left">
-                                        <span class="playground-icon mr-4">🤖</span>
-                                        <span class="font-paytone playground-title">AI AVATARS & INFLUENCERS</span>
-                                    </span>
-                                    <svg class="chevron w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
-                                </button>
-                                <div class="playground-accordion-content">
-                                    <p>Create a unique digital personality for your brand. Perfect for tutorials, social media, and virtual events.</p>
-                                </div>
-                            </div>
-                            <div class="playground-accordion-item">
-                                <button class="playground-accordion-trigger">
-                                    <span class="flex items-center text-left">
-                                        <span class="playground-icon mr-4">🎯</span>
-                                        <span class="font-paytone playground-title">MARKETING STRATEGY</span>
-                                    </span>
-                                    <svg class="chevron w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
-                                </button>
-                                <div class="playground-accordion-content">
-                                    <p>We use AI-driven insights to craft killer marketing strategies that ensure your creative hits the right people, at the right time.</p>
-                                </div>
-                            </div>
-                             <div class="playground-accordion-item">
-                                <button class="playground-accordion-trigger">
-                                    <span class="flex items-center text-left">
-                                        <span class="playground-icon mr-4">📸</span>
-                                        <span class="font-paytone playground-title">AR FILTERS & LENSES</span>
-                                    </span>
-                                    <svg class="chevron w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
-                                </button>
-                                <div class="playground-accordion-content">
-                                    <p>Engaging, interactive experiences for Instagram and Snapchat that put your audience right inside your brand's story.</p>
-                                </div>
-                            </div>
-                            <div class="playground-accordion-item">
-                                <button class="playground-accordion-trigger">
-                                    <span class="flex items-center text-left">
-                                        <span class="playground-icon mr-4">🧠</span>
-                                        <span class="font-paytone playground-title">AND SO MUCH MORE</span>
-                                    </span>
-                                    <svg class="chevron w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
-                                </button>
-                                <div class="playground-accordion-content">
-                                    <p>Got a weird, wild, or wonderful idea? The chances are our AI can help bring it to life. Let's chat about it!</p>
-                                </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Showcase Section -->
+        <section id="showcase" class="py-20 md:py-24 px-4 bg-dark-bg text-funky-yellow overflow-hidden">
+            <div class="container mx-auto text-center">
+                 <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-12 md:mb-16 reveal">STRAIGHT FIRE FROM THE AI</h2>
+                 <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-8 gap-y-12 md:gap-y-16 lg:gap-y-24">
+                    <!-- Item 1 -->
+                    <div class="showcase-item-wrapper showcase-tape-tr-bl">
+                        <div class="showcase-item cursor-pointer" data-video-id="dQw4w9WgXcQ" style="transform: rotate(3deg);">
+                            <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-a-person-writing-in-a-notebook-at-a-cafe-4395-small.mp4"></video>
+                            <div class="showcase-overlay">
+                               <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
+                               <h3 class="font-bold text-xl mt-4">Cosmic Kicks</h3>
+                               <p>Full Brand Identity</p>
                             </div>
                         </div>
                     </div>
-                </section>
+                    <!-- Item 2 -->
+                     <div class="showcase-item-wrapper showcase-tape-tl-br md:mt-12" style="transition-delay: 0.1s;">
+                        <div class="showcase-item cursor-pointer" data-video-id="y6120QOlsfU" style="transform: rotate(-2deg);">
+                            <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-programmer-writing-on-a-laptop-in-a-dark-room-4055-small.mp4"></video>
+                            <div class="showcase-overlay">
+                               <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
+                               <h3 class="font-bold text-xl mt-4">Fizzle Pop</h3>
+                               <p>Viral Social Series</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="showcase-item-wrapper showcase-tape-tr-bl" style="transition-delay: 0.2s;">
+                        <div class="showcase-item cursor-pointer" data-video-id="3JZ_D3ELwOQ" style="transform: rotate(4deg);">
+                            <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-girl-in-a-VR-headset-playing-a-game-4202-small.mp4"></video>
+                             <div class="showcase-overlay">
+                               <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
+                               <h3 class="font-bold text-xl mt-4">Synth App</h3>
+                               <p>Product Explainer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="showcase-item-wrapper showcase-tape-tl-br md:mt-16" style="transition-delay: 0.3s;">
+                        <div class="showcase-item cursor-pointer" data-video-id="KG_f-Tu_W4M" style="transform: rotate(-4deg);">
+                            <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-motion-graphics-of-a-nascar-car-42106-small.mp4"></video>
+                            <div class="showcase-overlay">
+                               <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
+                               <h3 class="font-bold text-xl mt-4">Apex Motors</h3>
+                               <p>AI-Generated Ad</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                     <div class="showcase-item-wrapper showcase-tape-tr-bl" style="transition-delay: 0.4s;">
+                        <div class="showcase-item cursor-pointer" data-video-id="p1H0h25S6B4" style="transform: rotate(2deg);">
+                            <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-modern-man-using-a-laptop-4387-small.mp4"></video>
+                            <div class="showcase-overlay">
+                               <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
+                               <h3 class="font-bold text-xl mt-4">Noyo AI</h3>
+                               <p>AR Filter Campaign</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="showcase-item-wrapper showcase-tape-tl-br md:mt-8" style="transition-delay: 0.5s;">
+                        <div class="showcase-item cursor-pointer" data-video-id="jNQXAC9IVRw" style="transform: rotate(-3deg);">
+                            <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-subscribe-button-on-a-screen-42188-small.mp4"></video>
+                             <div class="showcase-overlay">
+                               <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
+                               <h3 class="font-bold text-xl mt-4">Creator Hub</h3>
+                               <p>AI Influencer Launch</p>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
             </div>
-
-            <!-- Showcase Section -->
-            <section id="showcase" class="py-20 md:py-24 px-4 bg-dark-bg text-funky-yellow overflow-hidden">
-                <div class="container mx-auto text-center">
-                     <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-4 reveal">STRAIGHT FIRE FROM THE AI</h2>
-                     <p class="text-base md:text-lg max-w-2xl mx-auto mb-12 md:mb-16 reveal">We don't just talk the talk. Here’s a look at some of the disruptive, high-impact creative we've cooked up for our clients.</p>
-                     <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-8 gap-y-12 md:gap-y-16 lg:gap-y-24">
-                        <!-- Item 1 -->
-                        <div class="showcase-item-wrapper showcase-tape-tr-bl">
-                            <div class="showcase-item cursor-pointer" data-video-id="dQw4w9WgXcQ" style="transform: rotate(3deg);">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-a-person-writing-in-a-notebook-at-a-cafe-4395-small.mp4"></video>
-                                <div class="showcase-overlay">
-                                   <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 a 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
-                                   <h3 class="font-bold text-xl mt-4">Cosmic Kicks</h3>
-                                   <p>Full Brand Identity</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item 2 -->
-                         <div class="showcase-item-wrapper showcase-tape-tl-br md:mt-12" style="transition-delay: 0.1s;">
-                            <div class="showcase-item cursor-pointer" data-video-id="y6120QOlsfU" style="transform: rotate(-2deg);">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-programmer-writing-on-a-laptop-in-a-dark-room-4055-small.mp4"></video>
-                                <div class="showcase-overlay">
-                                   <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
-                                   <h3 class="font-bold text-xl mt-4">Fizzle Pop</h3>
-                                   <p>Viral Social Series</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item 3 -->
-                        <div class="showcase-item-wrapper showcase-tape-tr-bl" style="transition-delay: 0.2s;">
-                            <div class="showcase-item cursor-pointer" data-video-id="3JZ_D3ELwOQ" style="transform: rotate(4deg);">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-girl-in-a-VR-headset-playing-a-game-4202-small.mp4"></video>
-                                 <div class="showcase-overlay">
-                                   <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
-                                   <h3 class="font-bold text-xl mt-4">Synth App</h3>
-                                   <p>Product Explainer</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item 4 -->
-                        <div class="showcase-item-wrapper showcase-tape-tl-br md:mt-16" style="transition-delay: 0.3s;">
-                            <div class="showcase-item cursor-pointer" data-video-id="KG_f-Tu_W4M" style="transform: rotate(-4deg);">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-motion-graphics-of-a-nascar-car-42106-small.mp4"></video>
-                                <div class="showcase-overlay">
-                                   <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
-                                   <h3 class="font-bold text-xl mt-4">Apex Motors</h3>
-                                   <p>AI-Generated Ad</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item 5 -->
-                         <div class="showcase-item-wrapper showcase-tape-tr-bl" style="transition-delay: 0.4s;">
-                            <div class="showcase-item cursor-pointer" data-video-id="p1H0h25S6B4" style="transform: rotate(2deg);">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-modern-man-using-a-laptop-4387-small.mp4"></video>
-                                <div class="showcase-overlay">
-                                   <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
-                                   <h3 class="font-bold text-xl mt-4">Noyo AI</h3>
-                                   <p>AR Filter Campaign</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item 6 -->
-                        <div class="showcase-item-wrapper showcase-tape-tl-br md:mt-8" style="transition-delay: 0.5s;">
-                            <div class="showcase-item cursor-pointer" data-video-id="jNQXAC9IVRw" style="transform: rotate(-3deg);">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-subscribe-button-on-a-screen-42188-small.mp4"></video>
-                                 <div class="showcase-overlay">
-                                   <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
-                                   <h3 class="font-bold text-xl mt-4">Creator Hub</h3>
-                                   <p>AI Influencer Launch</p>
-                                </div>
-                            </div>
-                        </div>
-                     </div>
-                </div>
-            </section>
-            
-            <!-- Video Lightbox Structure -->
-            <div id="video-lightbox" class="lightbox">
-                <div class="lightbox-content">
-                    <span id="close-lightbox" class="close-lightbox">&times;</span>
-                    <div id="lightbox-video-wrapper" class="lightbox-video-wrapper">
-                        <!-- YouTube iframe will be injected here -->
-                    </div>
-                </div>
-            </div>
-            
-            <!-- NOYO-verse Section -->
-            <section id="noyoverse" class="py-20 md:py-24 px-4">
-                <div class="container mx-auto text-center max-w-5xl">
-                    <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-6 reveal">JOIN THE NOYO-VERSE</h2>
-                    <p class="text-base md:text-lg mb-12 md:mb-16 reveal">NOYOSPARK is one piece of a bigger puzzle. We're part of an ecosystem of AI-powered solutions designed to elevate your business from every angle.</p>
-                    
-                    <div class="flex items-center justify-center space-x-2 md:space-x-8">
-                        <!-- Item 1 -->
-                        <div class="noyo-item text-center">
-                            <div class="bg-funky-yellow text-dark-bg rounded-full h-20 w-20 md:h-24 md:w-24 lg:h-32 lg:w-32 flex items-center justify-center mb-4 mx-auto">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 lg:h-16 lg:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
-                            </div>
-                            <h3 class="font-bold text-base md:text-lg">NOYOSPARK</h3>
-                            <p class="text-xs md:text-sm opacity-80">Your AI Creative Studio</p>
-                        </div>
-                        
-                        <div class="connector"></div>
-                        
-                        <!-- Item 2 -->
-                        <div class="noyo-item text-center" style="animation-delay: 0.2s;">
-                             <div class="bg-funky-yellow text-dark-bg rounded-full h-20 w-20 md:h-24 md:w-24 lg:h-32 lg:w-32 flex items-center justify-center mb-4 mx-auto">
-                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 lg:h-16 lg:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4" /></svg>
-                            </div>
-                            <h3 class="font-bold text-base md:text-lg">NOYOAI</h3>
-                             <p class="text-xs md:text-sm opacity-80">AI Workflow Automation</p>
-                        </div>
-                        
-                        <div class="connector"></div>
-
-                        <!-- Item 3 -->
-                        <div class="noyo-item text-center" style="animation-delay: 0.4s;">
-                             <div class="bg-funky-yellow text-dark-bg rounded-full h-20 w-20 md:h-24 md:w-24 lg:h-32 lg:w-32 flex items-center justify-center mb-4 mx-auto">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 lg:h-16 lg:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m-9 9a9 9 0 019-9" /></svg>
-                            </div>
-                            <h3 class="font-bold text-base md:text-lg">NOYO</h3>
-                             <p class="text-xs md:text-sm opacity-80">The Parent Company</p>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact" class="py-20 md:py-24 px-4">
-                <div class="container mx-auto text-center max-w-4xl">
-                    <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-6 reveal">READY TO MAKE SOME NOISE?</h2>
-                    <p class="text-base md:text-lg mb-10 reveal">Your brand is one click away from getting its glow-up. Drop us a line and let's cook up something legendary. No boring contact forms, just send us an email.</p>
-                    <div class="reveal">
-                        <a href="mailto:hello@noyospark.com" class="btn-funky text-sm sm:text-lg md:text-2xl break-all">hello@noyospark.com</a>
-                    </div>
-                </div>
-            </section>
-
-        </main>
+        </section>
         
-        <footer class="py-8 px-4">
-            <div class="container mx-auto text-center text-sm">
-                <p>&copy; 2024 NOYOSPARK. All Rights Reserved. Built with 🤖 and ❤️.</p>
+        <!-- Video Lightbox Structure -->
+        <div id="video-lightbox" class="lightbox">
+            <div class="lightbox-content">
+                <span id="close-lightbox" class="close-lightbox">&times;</span>
+                <div id="lightbox-video-wrapper" class="lightbox-video-wrapper">
+                    <!-- YouTube iframe will be injected here -->
+                </div>
             </div>
-        </footer>
-    </div>
+        </div>
+        
+        <!-- NOYO-verse Section -->
+        <section id="noyoverse" class="py-20 md:py-24 px-4">
+            <div class="container mx-auto text-center max-w-5xl">
+                <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-6 reveal">JOIN THE NOYO-VERSE</h2>
+                <p class="text-base md:text-lg mb-12 md:mb-16 reveal">NOYOSPARK is one piece of a bigger puzzle. We're part of an ecosystem of AI-powered solutions designed to elevate your business from every angle.</p>
+                
+                <div class="flex items-center justify-center space-x-2 md:space-x-8">
+                    <!-- Item 1 -->
+                    <div class="noyo-item text-center">
+                        <div class="bg-funky-yellow text-dark-bg rounded-full h-20 w-20 md:h-24 md:w-24 lg:h-32 lg:w-32 flex items-center justify-center mb-4 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 lg:h-16 lg:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                        </div>
+                        <h3 class="font-bold text-base md:text-lg">NOYOSPARK</h3>
+                        <p class="text-xs md:text-sm opacity-80">Your AI Creative Studio</p>
+                    </div>
+                    
+                    <div class="connector"></div>
+                    
+                    <!-- Item 2 -->
+                    <div class="noyo-item text-center" style="animation-delay: 0.2s;">
+                         <div class="bg-funky-yellow text-dark-bg rounded-full h-20 w-20 md:h-24 md:w-24 lg:h-32 lg:w-32 flex items-center justify-center mb-4 mx-auto">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 lg:h-16 lg:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4" /></svg>
+                        </div>
+                        <h3 class="font-bold text-base md:text-lg">NOYOAI</h3>
+                         <p class="text-xs md:text-sm opacity-80">AI Workflow Automation</p>
+                    </div>
+                    
+                    <div class="connector"></div>
+
+                    <!-- Item 3 -->
+                    <div class="noyo-item text-center" style="animation-delay: 0.4s;">
+                         <div class="bg-funky-yellow text-dark-bg rounded-full h-20 w-20 md:h-24 md:w-24 lg:h-32 lg:w-32 flex items-center justify-center mb-4 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 lg:h-16 lg:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m-9 9a9 9 0 019-9" /></svg>
+                        </div>
+                        <h3 class="font-bold text-base md:text-lg">NOYO</h3>
+                         <p class="text-xs md:text-sm opacity-80">The Parent Company</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-24 px-4">
+            <div class="container mx-auto text-center max-w-4xl">
+                <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-6 reveal">READY TO MAKE SOME NOISE?</h2>
+                <p class="text-base md:text-lg mb-10 reveal">Your brand is one click away from getting its glow-up. Drop us a line and let's cook up something legendary. No boring contact forms, just send us an email.</p>
+                <div class="reveal">
+                    <a href="mailto:hello@noyospark.com" class="btn-funky text-lg md:text-2xl break-all">hello@noyospark.com</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="py-8 px-4">
+        <div class="container mx-auto text-center text-sm">
+            <p>&copy; 2024 NOYOSPARK. All Rights Reserved. Built with 🤖 and ❤️.</p>
+        </div>
+    </footer>
 
 
     <script>
@@ -1321,21 +1318,10 @@
 
                     currentPhrase.forEach(lineText => {
                         const lineDiv = document.createElement('div');
-                         // Special handling for "SCROLL-STOPPING"
-                        if (lineText === "SCROLL-STOPPING") {
-                            lineText = "SCROLL&#8209;STOPPING";
-                        }
                         lineText.split('').forEach(char => {
                             const span = document.createElement('span');
                             span.className = 'letter';
-                            if (char === ' ') {
-                                span.innerHTML = '&nbsp;';
-                            } else if (char === '‑') { // Non-breaking hyphen
-                                span.innerHTML = '&#8209;';
-                            }
-                            else {
-                                span.innerHTML = char;
-                            }
+                            span.innerHTML = char === ' ' ? '&nbsp;' : char;
                             span.style.animationDelay = `${totalDelay}s`;
                             lineDiv.appendChild(span);
                             totalDelay += delayIncrement;
@@ -1456,14 +1442,14 @@
             function initSauceSlider() {
                 if (window.innerWidth >= 768) return;
 
-                const sliderContainer = document.querySelector('.sauce-slider-container');
+                const track = document.querySelector('.sauce-slider-track');
                 const dotsContainer = document.querySelector('.sauce-dots');
-                if (!sliderContainer || !dotsContainer) return;
-
-                const cards = sliderContainer.querySelectorAll('.clay-card');
-                if (cards.length === 0) return;
+                if (!track || !dotsContainer) return;
                 
-                dotsContainer.innerHTML = ''; // Clear existing dots
+                const cards = track.querySelectorAll('.clay-card');
+                if (cards.length === 0) return;
+
+                dotsContainer.innerHTML = '';
                 cards.forEach((_, index) => {
                     const dot = document.createElement('button');
                     dot.classList.add('sauce-dot');
@@ -1472,50 +1458,29 @@
                 });
 
                 const dots = dotsContainer.querySelectorAll('.sauce-dot');
-                
-                const updateActiveDot = () => {
-                    const scrollLeft = sliderContainer.scrollLeft;
-                    const cardWidth = cards[0].offsetWidth + (parseInt(getComputedStyle(cards[0]).marginRight) * 2);
-                    const activeIndex = Math.round(scrollLeft / cardWidth);
-                    
-                    dots.forEach((dot, index) => {
-                        if (index === activeIndex) {
-                            dot.classList.add('active');
-                        } else {
-                            dot.classList.remove('active');
+                if (dots.length > 0) dots[0].classList.add('active');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const cardIndex = Array.from(cards).indexOf(entry.target);
+                            if (dots[cardIndex]) {
+                                dots.forEach(dot => dot.classList.remove('active'));
+                                dots[cardIndex].classList.add('active');
+                            }
                         }
                     });
-                };
-                
-                sliderContainer.addEventListener('scroll', updateActiveDot);
-                updateActiveDot(); // Initial call
+                }, {
+                    root: track.parentElement,
+                    threshold: 0.6
+                });
+
+                cards.forEach(card => {
+                    observer.observe(card);
+                });
             }
 
             initSauceSlider();
-
-            // Touch interactivity for cards
-            function initTouchEffects() {
-                if (!isTouchDevice()) return;
-
-                const touchableCards = document.querySelectorAll('.about-card, .clay-card, .playground-card, .showcase-item');
-                
-                touchableCards.forEach(card => {
-                    card.addEventListener('touchstart', () => {
-                        card.classList.add('touch-active');
-                    }, { passive: true });
-                    
-                    card.addEventListener('touchend', () => {
-                        setTimeout(() => {
-                           card.classList.remove('touch-active');
-                        }, 150);
-                    });
-
-                    card.addEventListener('touchcancel', () => {
-                        card.classList.remove('touch-active');
-                    });
-                });
-            }
-            initTouchEffects();
 
 
             // Video Lightbox Logic
