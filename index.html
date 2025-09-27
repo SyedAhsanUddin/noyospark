@@ -47,7 +47,7 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
                 border-radius: 50%;
-                opacity: 1;
+                opacity: 0; /* Initially hidden */
                 transition: opacity 0.3s ease-in-out, transform 0.1s ease-in-out;
                 z-index: 10001;
             }
@@ -62,7 +62,7 @@
                 border: 2px solid var(--dark-bg);
             }
             /* Hide default cursor on desktop */
-            * {
+            body, a, button, .cursor-pointer {
                 cursor: none;
             }
         }
@@ -126,10 +126,10 @@
         .menu-open #main-header {
             z-index: 10001; /* Ensure header with button is above mobile menu overlay */
         }
-        #main-header .font-paytone {
+        #main-header .header-logo {
             transition: opacity 0.3s ease;
         }
-        .menu-open #main-header .font-paytone {
+        .menu-open #main-header .header-logo {
             opacity: 0;
         }
         .sticky-header {
@@ -731,9 +731,11 @@
 
     <!-- Main Header -->
     <header id="main-header" class="p-4 md:p-6 absolute top-0 left-0 w-full z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-2xl md:text-3xl font-paytone">NOYOCREATIVE</div>
-            <nav class="hidden md:flex items-center space-x-8">
+        <div class="container mx-auto flex justify-between items-center md:relative">
+            <a href="#" class="block header-logo -translate-y-0.5">
+                <img src="https://i.postimg.cc/vBqmNX0n/Noyo-Spark-logo.png" alt="NOYOCREATIVE Logo" class="h-8 md:h-10">
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 md:absolute md:left-1/2 md:top-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2">
                 <a href="#about" class="font-semibold hover:text-electric-blue transition-colors">About</a>
                 <a href="#how" class="font-semibold hover:text-electric-blue transition-colors">Process</a>
                 <a href="#showcase" class="font-semibold hover:text-electric-blue transition-colors">Showcase</a>
@@ -755,9 +757,11 @@
 
     <!-- Sticky Header -->
     <header id="sticky-header" class="sticky-header p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-2xl font-paytone">NOYOCREATIVE</div>
-            <nav class="hidden md:flex items-center space-x-6">
+        <div class="container mx-auto flex justify-between items-center md:relative">
+            <a href="#" class="block -translate-y-0.5">
+                <img src="https://i.postimg.cc/vBqmNX0n/Noyo-Spark-logo.png" alt="NOYOCREATIVE Logo" class="h-8 md:h-10">
+            </a>
+            <nav class="hidden md:flex items-center space-x-6 md:absolute md:left-1/2 md:top-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2">
                 <a href="#about" class="font-semibold hover:text-electric-blue transition-colors">About</a>
                 <a href="#how" class="font-semibold hover:text-electric-blue transition-colors">Process</a>
                 <a href="#showcase" class="font-semibold hover:text-electric-blue transition-colors">Showcase</a>
@@ -839,7 +843,7 @@
         </section>
 
         <!-- How It Works Section -->
-        <section id="how" class="py-20 md:py-24 px-4 bg-dark-bg text-funky-yellow">
+        <section id="how" class="py-20 md:py-24 px-4">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-12 md:mb-16 reveal">HOW WE COOK UP THE MAGIC</h2>
                 <div class="grid md:grid-cols-3 gap-10 md:gap-12 max-w-6xl mx-auto">
@@ -1186,7 +1190,7 @@
 
     </main>
     
-    <footer class="py-8 px-4 bg-dark-bg text-funky-yellow">
+    <footer class="py-8 px-4">
         <div class="container mx-auto text-center text-sm">
             <p>&copy; 2024 NOYOCREATIVE. All Rights Reserved. Built with 🤖 and ❤️.</p>
         </div>
@@ -1234,8 +1238,14 @@
             const cursorOutline = document.querySelector('.cursor-outline');
             if (!isTouchDevice() && cursorDot && cursorOutline) {
                 const hoverables = document.querySelectorAll('a, button, .cursor-pointer, .about-card, .playground-card');
+                let hasMoved = false;
 
                 window.addEventListener('mousemove', function (e) {
+                    if (!hasMoved) {
+                        cursorDot.style.opacity = '1';
+                        cursorOutline.style.opacity = '1';
+                        hasMoved = true;
+                    }
                     const posX = e.clientX;
                     const posY = e.clientY;
 
@@ -1523,3 +1533,9 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
