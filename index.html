@@ -325,7 +325,7 @@
         }
 
 
-        .about-card:hover {
+        .about-card:hover, .about-card.touch-active {
             transform: rotate(0) scale(1.02) !important; /* Override inline style */
             box-shadow: 12px 12px 0 var(--electric-blue);
         }
@@ -448,7 +448,7 @@
             transition-delay: 0s !important;
         }
 
-        .clay-card:active {
+        .clay-card:active, .clay-card.touch-active {
             transform: translate(8px, 8px);
             box-shadow: 0px 0px 0px var(--dark-bg);
         }
@@ -516,7 +516,7 @@
             justify-content: space-between;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-         .playground-card:hover {
+         .playground-card:hover, .playground-card.touch-active {
             transform: translateY(-10px);
             box-shadow: 10px 20px 0px var(--electric-blue);
         }
@@ -641,7 +641,7 @@
             aspect-ratio: 3 / 2;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-         .showcase-item:hover {
+         .showcase-item:hover, .showcase-item.touch-active {
             transform: scale(1.05) !important; /* Override inline rotate */
             box-shadow: 12px 12px 0 var(--electric-blue);
         }
@@ -1058,7 +1058,8 @@
             <!-- Showcase Section -->
             <section id="showcase" class="py-20 md:py-24 px-4 bg-dark-bg text-funky-yellow overflow-hidden">
                 <div class="container mx-auto text-center">
-                     <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-12 md:mb-16 reveal">STRAIGHT FIRE FROM THE AI</h2>
+                     <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-4 reveal">STRAIGHT FIRE FROM THE AI</h2>
+                     <p class="text-base md:text-lg max-w-2xl mx-auto mb-12 md:mb-16 reveal">We don't just talk the talk. Here’s a look at some of the disruptive, high-impact creative we've cooked up for our clients.</p>
                      <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-8 gap-y-12 md:gap-y-16 lg:gap-y-24">
                         <!-- Item 1 -->
                         <div class="showcase-item-wrapper showcase-tape-tr-bl">
@@ -1188,7 +1189,7 @@
                     <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-6 reveal">READY TO MAKE SOME NOISE?</h2>
                     <p class="text-base md:text-lg mb-10 reveal">Your brand is one click away from getting its glow-up. Drop us a line and let's cook up something legendary. No boring contact forms, just send us an email.</p>
                     <div class="reveal">
-                        <a href="mailto:hello@noyospark.com" class="btn-funky text-base md:text-2xl break-all">hello@noyospark.com</a>
+                        <a href="mailto:hello@noyospark.com" class="btn-funky text-sm sm:text-lg md:text-2xl break-all">hello@noyospark.com</a>
                     </div>
                 </div>
             </section>
@@ -1320,10 +1321,21 @@
 
                     currentPhrase.forEach(lineText => {
                         const lineDiv = document.createElement('div');
+                         // Special handling for "SCROLL-STOPPING"
+                        if (lineText === "SCROLL-STOPPING") {
+                            lineText = "SCROLL&#8209;STOPPING";
+                        }
                         lineText.split('').forEach(char => {
                             const span = document.createElement('span');
                             span.className = 'letter';
-                            span.innerHTML = char === ' ' ? '&nbsp;' : char;
+                            if (char === ' ') {
+                                span.innerHTML = '&nbsp;';
+                            } else if (char === '‑') { // Non-breaking hyphen
+                                span.innerHTML = '&#8209;';
+                            }
+                            else {
+                                span.innerHTML = char;
+                            }
                             span.style.animationDelay = `${totalDelay}s`;
                             lineDiv.appendChild(span);
                             totalDelay += delayIncrement;
@@ -1444,14 +1456,14 @@
             function initSauceSlider() {
                 if (window.innerWidth >= 768) return;
 
-                const track = document.querySelector('.sauce-slider-track');
+                const sliderContainer = document.querySelector('.sauce-slider-container');
                 const dotsContainer = document.querySelector('.sauce-dots');
-                if (!track || !dotsContainer) return;
-                
-                const cards = track.querySelectorAll('.clay-card');
-                if (cards.length === 0) return;
+                if (!sliderContainer || !dotsContainer) return;
 
-                dotsContainer.innerHTML = '';
+                const cards = sliderContainer.querySelectorAll('.clay-card');
+                if (cards.length === 0) return;
+                
+                dotsContainer.innerHTML = ''; // Clear existing dots
                 cards.forEach((_, index) => {
                     const dot = document.createElement('button');
                     dot.classList.add('sauce-dot');
@@ -1460,29 +1472,50 @@
                 });
 
                 const dots = dotsContainer.querySelectorAll('.sauce-dot');
-                if (dots.length > 0) dots[0].classList.add('active');
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const cardIndex = Array.from(cards).indexOf(entry.target);
-                            if (dots[cardIndex]) {
-                                dots.forEach(dot => dot.classList.remove('active'));
-                                dots[cardIndex].classList.add('active');
-                            }
+                
+                const updateActiveDot = () => {
+                    const scrollLeft = sliderContainer.scrollLeft;
+                    const cardWidth = cards[0].offsetWidth + (parseInt(getComputedStyle(cards[0]).marginRight) * 2);
+                    const activeIndex = Math.round(scrollLeft / cardWidth);
+                    
+                    dots.forEach((dot, index) => {
+                        if (index === activeIndex) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
                         }
                     });
-                }, {
-                    root: track,
-                    threshold: 0.6
-                });
-
-                cards.forEach(card => {
-                    observer.observe(card);
-                });
+                };
+                
+                sliderContainer.addEventListener('scroll', updateActiveDot);
+                updateActiveDot(); // Initial call
             }
 
             initSauceSlider();
+
+            // Touch interactivity for cards
+            function initTouchEffects() {
+                if (!isTouchDevice()) return;
+
+                const touchableCards = document.querySelectorAll('.about-card, .clay-card, .playground-card, .showcase-item');
+                
+                touchableCards.forEach(card => {
+                    card.addEventListener('touchstart', () => {
+                        card.classList.add('touch-active');
+                    }, { passive: true });
+                    
+                    card.addEventListener('touchend', () => {
+                        setTimeout(() => {
+                           card.classList.remove('touch-active');
+                        }, 150);
+                    });
+
+                    card.addEventListener('touchcancel', () => {
+                        card.classList.remove('touch-active');
+                    });
+                });
+            }
+            initTouchEffects();
 
 
             // Video Lightbox Logic
