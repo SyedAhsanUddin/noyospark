@@ -546,7 +546,7 @@
                 border-radius: 20px;
                 box-shadow: 8px 8px 0 var(--dark-bg);
                 overflow: hidden;
-                transition: box-shadow 0.3s ease;
+                transition: box-shadow 0.3s ease, transform 0.3s ease;
             }
             .playground-accordion-item.active {
                 box-shadow: 8px 8px 0 var(--electric-blue);
@@ -727,6 +727,31 @@
         .lightbox-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         .close-lightbox { position: absolute; top: -40px; right: -10px; color: white; font-size: 3rem; cursor: pointer; }
         
+        /* Mobile Press Effects */
+        .about-card.mobile-press {
+            transform: rotate(0) scale(1.02) !important;
+            box-shadow: 12px 12px 0 var(--electric-blue) !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .clay-card.mobile-press {
+            transform: translateY(-5px);
+            box-shadow: 4px 4px 0px var(--electric-blue) !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .playground-accordion-item.mobile-press {
+            transform: translateY(-5px);
+            box-shadow: 8px 13px 0 var(--electric-blue);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .showcase-item.mobile-press {
+            transform: scale(1.05) !important;
+            box-shadow: 12px 12px 0 var(--electric-blue) !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
     </style>
 </head>
 <body class="relative">
@@ -1079,8 +1104,8 @@
                             <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-a-person-writing-in-a-notebook-at-a-cafe-4395-small.mp4"></video>
                             <div class="showcase-overlay">
                                <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
-                               <h3 class="font-bold text-xl mt-4">Cosmic Kicks</h3>
-                               <p>Full Brand Identity</p>
+                               <h3 class="font-bold text-base md:text-xl mt-4 text-center px-2">Cosmic Kicks</h3>
+                               <p class="text-sm">Full Brand Identity</p>
                             </div>
                         </div>
                     </div>
@@ -1090,8 +1115,8 @@
                             <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-programmer-writing-on-a-laptop-in-a-dark-room-4055-small.mp4"></video>
                             <div class="showcase-overlay">
                                <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
-                               <h3 class="font-bold text-xl mt-4">Fizzle Pop</h3>
-                               <p>Viral Social Series</p>
+                               <h3 class="font-bold text-base md:text-xl mt-4 text-center px-2">Fizzle Pop</h3>
+                               <p class="text-sm">Viral Social Series</p>
                             </div>
                         </div>
                     </div>
@@ -1101,8 +1126,8 @@
                             <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-girl-in-a-VR-headset-playing-a-game-4202-small.mp4"></video>
                              <div class="showcase-overlay">
                                <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
-                               <h3 class="font-bold text-xl mt-4">Synth App</h3>
-                               <p>Product Explainer</p>
+                               <h3 class="font-bold text-base md:text-xl mt-4 text-center px-2">Synth App</h3>
+                               <p class="text-sm">Product Explainer</p>
                             </div>
                         </div>
                     </div>
@@ -1112,8 +1137,8 @@
                             <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-motion-graphics-of-a-nascar-car-42106-small.mp4"></video>
                             <div class="showcase-overlay">
                                <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
-                               <h3 class="font-bold text-xl mt-4">Apex Motors</h3>
-                               <p>AI-Generated Ad</p>
+                               <h3 class="font-bold text-base md:text-xl mt-4 text-center px-2">Apex Motors</h3>
+                               <p class="text-sm">AI-Generated Ad</p>
                             </div>
                         </div>
                     </div>
@@ -1123,8 +1148,8 @@
                             <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-modern-man-using-a-laptop-4387-small.mp4"></video>
                             <div class="showcase-overlay">
                                <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
-                               <h3 class="font-bold text-xl mt-4">Noyo AI</h3>
-                               <p>AR Filter Campaign</p>
+                               <h3 class="font-bold text-base md:text-xl mt-4 text-center px-2">Noyo AI</h3>
+                               <p class="text-sm">AR Filter Campaign</p>
                             </div>
                         </div>
                     </div>
@@ -1134,8 +1159,8 @@
                             <video class="w-full h-full object-cover" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-subscribe-button-on-a-screen-42188-small.mp4"></video>
                              <div class="showcase-overlay">
                                <div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-dark-bg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></div>
-                               <h3 class="font-bold text-xl mt-4">Creator Hub</h3>
-                               <p>AI Influencer Launch</p>
+                               <h3 class="font-bold text-base md:text-xl mt-4 text-center px-2">Creator Hub</h3>
+                               <p class="text-sm">AI Influencer Launch</p>
                             </div>
                         </div>
                     </div>
@@ -1548,9 +1573,32 @@
                 link.addEventListener('click', toggleMenu);
             });
 
+            // --- Mobile Press Effect ---
+            function initMobilePressEffects() {
+                if (!isTouchDevice()) return;
+
+                const pressableElements = document.querySelectorAll(
+                    '.about-card, .clay-card, .playground-accordion-item, .showcase-item'
+                );
+
+                pressableElements.forEach(el => {
+                    el.addEventListener('touchstart', () => {
+                        el.classList.add('mobile-press');
+                    }, { passive: true });
+
+                    el.addEventListener('touchend', () => {
+                        el.classList.remove('mobile-press');
+                    });
+                    
+                    el.addEventListener('touchcancel', () => {
+                        el.classList.remove('mobile-press');
+                    });
+                });
+            }
+            initMobilePressEffects();
+
         });
     </script>
 </body>
 </html>
-
 
