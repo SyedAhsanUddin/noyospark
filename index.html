@@ -21,7 +21,13 @@
             color: var(--dark-bg);
             font-family: 'Poppins', sans-serif;
             cursor: none;
-            overflow-x: hidden;
+        }
+        
+        /* Prevent horizontal scroll on mobile only */
+        @media (max-width: 1023px) {
+            html, body {
+                overflow-x: hidden;
+            }
         }
         
         /* Dotted Background */
@@ -156,7 +162,7 @@
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
         .menu-open .menu-toggle-btn span {
-             background-color: var(--funky-yellow);
+            background-color: var(--funky-yellow);
         }
         .menu-open .menu-toggle-btn .line1 {
             transform: rotate(45deg) translate(6px, 6px);
@@ -1057,7 +1063,7 @@
         <!-- Showcase Section -->
         <section id="showcase" class="py-20 md:py-24 px-4 bg-dark-bg relative z-10">
             <div class="container mx-auto text-center">
-                 <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-12 md:mb-16 reveal ">STRAIGHT FIRE FROM THE AI</h2>
+                 <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-12 md:mb-16 reveal text-funky-yellow">STRAIGHT FIRE FROM THE AI</h2>
                  <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-8 gap-y-12 md:gap-y-16 lg:gap-y-24">
                     <!-- Item 1 -->
                     <div class="showcase-item-wrapper showcase-tape-tr-bl">
@@ -1537,8 +1543,4 @@
     </script>
 </body>
 </html>
-
-
-
-
 
