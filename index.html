@@ -641,6 +641,28 @@
              .carousel-nav-btn:active {
                 transform: scale(0.95);
             }
+            .carousel-dots {
+                margin-top: 2rem;
+                display: flex;
+                gap: 0.75rem;
+                justify-content: center;
+            }
+            .carousel-dot-btn {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: rgba(18, 18, 18, 0.3);
+                transition: all 0.3s ease;
+                border: none;
+                padding: 0;
+            }
+            .carousel-dot-btn:hover {
+                background: rgba(18, 18, 18, 0.6);
+            }
+            .carousel-dot-btn.active {
+                background: var(--dark-bg);
+                transform: scale(1.1);
+            }
         }
         
         /* NOYO-verse Section */
@@ -1033,32 +1055,37 @@
                 </div>
 
                 <!-- Desktop: 3D Carousel -->
-                <div class="carousel-container hidden lg:block">
-                    <div class="carousel">
-                        <div class="playground-card">
-                            <div class="playground-icon">🎬</div> <h3 class="font-paytone playground-title">VIRAL REELS & SHORTS</h3>
-                            <p>Thumb-stopping short-form video content designed for TikTok, Reels, and Shorts that gets views and builds community.</p>
+                <div class="hidden lg:flex flex-col items-center">
+                    <div class="carousel-container">
+                        <div class="carousel">
+                            <div class="playground-card">
+                                <div class="playground-icon">🎬</div> <h3 class="font-paytone playground-title">VIRAL REELS & SHORTS</h3>
+                                <p>Thumb-stopping short-form video content designed for TikTok, Reels, and Shorts that gets views and builds community.</p>
+                            </div>
+                            <div class="playground-card">
+                                <div class="playground-icon">✨</div> <h3 class="font-paytone playground-title">BRAND IDENTITIES</h3>
+                                <p>From logos to brand guidelines, we build cohesive, memorable brand worlds that connect with your audience on a deeper level.</p>
+                            </div>
+                            <div class="playground-card">
+                                <div class="playground-icon">🤖</div> <h3 class="font-paytone playground-title">AI AVATARS & INFLUENCERS</h3>
+                                <p>Create a unique digital personality for your brand. Perfect for tutorials, social media, and virtual events.</p>
+                            </div>
+                            <div class="playground-card">
+                                <div class="playground-icon">🎯</div> <h3 class="font-paytone playground-title">MARKETING STRATEGY</h3>
+                                <p>We use AI-driven insights to craft killer marketing strategies that ensure your creative hits the right people, at the right time.</p>
+                            </div>
+                            <div class="playground-card">
+                                <div class="playground-icon">📸</div> <h3 class="font-paytone playground-title">AR FILTERS & LENSES</h3>
+                                <p>Engaging, interactive experiences for Instagram and Snapchat that put your audience right inside your brand's story.</p>
+                            </div>
+                            <div class="playground-card">
+                                <div class="playground-icon">🧠</div> <h3 class="font-paytone playground-title">AND SO MUCH MORE</h3>
+                                <p>Got a weird, wild, or wonderful idea? The chances are our AI can help bring it to life. Let's chat about it!</p>
+                            </div>
                         </div>
-                        <div class="playground-card">
-                            <div class="playground-icon">✨</div> <h3 class="font-paytone playground-title">BRAND IDENTITIES</h3>
-                            <p>From logos to brand guidelines, we build cohesive, memorable brand worlds that connect with your audience on a deeper level.</p>
-                        </div>
-                        <div class="playground-card">
-                            <div class="playground-icon">🤖</div> <h3 class="font-paytone playground-title">AI AVATARS & INFLUENCERS</h3>
-                            <p>Create a unique digital personality for your brand. Perfect for tutorials, social media, and virtual events.</p>
-                        </div>
-                        <div class="playground-card">
-                            <div class="playground-icon">🎯</div> <h3 class="font-paytone playground-title">MARKETING STRATEGY</h3>
-                            <p>We use AI-driven insights to craft killer marketing strategies that ensure your creative hits the right people, at the right time.</p>
-                        </div>
-                        <div class="playground-card">
-                            <div class="playground-icon">📸</div> <h3 class="font-paytone playground-title">AR FILTERS & LENSES</h3>
-                            <p>Engaging, interactive experiences for Instagram and Snapchat that put your audience right inside your brand's story.</p>
-                        </div>
-                        <div class="playground-card">
-                            <div class="playground-icon">🧠</div> <h3 class="font-paytone playground-title">AND SO MUCH MORE</h3>
-                            <p>Got a weird, wild, or wonderful idea? The chances are our AI can help bring it to life. Let's chat about it!</p>
-                        </div>
+                    </div>
+                    <div class="carousel-dots">
+                        <!-- Dots will be injected by JS -->
                     </div>
                 </div>
                 
@@ -1147,7 +1174,7 @@
         <!-- Showcase Section -->
         <section id="showcase" class="py-20 md:py-24 px-4 bg-dark-bg relative z-10">
             <div class="container mx-auto text-center">
-                 <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-12 md:mb-16 reveal text-funky-yellow">STRAIGHT FIRE FROM THE AI</h2>
+                 <h2 class="text-3xl md:text-4xl lg:text-6xl font-paytone mb-12 md:mb-16 ">STRAIGHT FIRE FROM THE AI</h2>
                  <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-8 gap-y-12 md:gap-y-16 lg:gap-y-24">
                     <!-- Item 1 -->
                     <div class="showcase-item-wrapper showcase-tape-tr-bl">
@@ -1455,23 +1482,51 @@
                 const cards = document.querySelectorAll('#playground .playground-card');
                 const nextBtn = document.getElementById('next-btn');
                 const prevBtn = document.getElementById('prev-btn');
+                const dotsContainer = document.querySelector('.carousel-dots');
 
-                if (!carousel || cards.length === 0 || !nextBtn || !prevBtn) return;
+                if (!carousel || cards.length === 0 || !nextBtn || !prevBtn || !dotsContainer) return;
 
                 const cardCount = cards.length;
                 const angle = 360 / cardCount;
                 const translateZ = 420;
                 let currentCardIndex = 0;
+
+                // Create dots
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < cardCount; i++) {
+                    const dot = document.createElement('button');
+                    dot.classList.add('carousel-dot-btn');
+                    dot.addEventListener('click', () => {
+                        currentCardIndex = i;
+                        rotateCarousel();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+                const dots = dotsContainer.querySelectorAll('.carousel-dot-btn');
+
+                function updateDots() {
+                    dots.forEach((dot, index) => {
+                        const activeIndex = (currentCardIndex % cardCount + cardCount) % cardCount;
+                        if (index === activeIndex) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
                 
                 function rotateCarousel() {
                     const rotateY = currentCardIndex * -angle;
                     carousel.style.transform = `translateZ(-${translateZ}px) rotateY(${rotateY}deg)`;
+                    updateDots();
                 }
 
                 cards.forEach((card, index) => {
                     const rotateY = angle * index;
                     card.style.transform = `rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
                 });
+
+                updateDots(); // Initial call
                 
                 nextBtn.addEventListener('click', () => {
                     currentCardIndex++;
@@ -1491,7 +1546,8 @@
                 carouselContainer.addEventListener('mousedown', (e) => {
                     isDragging = true;
                     startX = e.clientX;
-                    startRotation = currentCardIndex * -angle;
+                    const matrix = new DOMMatrix(getComputedStyle(carousel).transform);
+                    startRotation = Math.atan2(matrix.m31, matrix.m11) * (180 / Math.PI);
                     carousel.style.transition = 'none';
                     e.preventDefault();
                 });
@@ -1509,9 +1565,9 @@
                     isDragging = false;
                     carousel.style.transition = 'transform 0.5s cubic-bezier(0.77, 0, 0.175, 1)';
                     
-                    const currentTransform = carousel.style.transform;
+                    const currentTransform = getComputedStyle(carousel).transform;
                     const matrix = new DOMMatrix(currentTransform);
-                    const currentAngle = Math.atan2(matrix.m13, matrix.m11) * (180 / Math.PI);
+                    const currentAngle = Math.atan2(matrix.m31, matrix.m11) * (180 / Math.PI);
 
                     currentCardIndex = Math.round(currentAngle / -angle);
                     rotateCarousel();
@@ -1684,5 +1740,6 @@
     </script>
 </body>
 </html>
+" and have made some changes. Please see below.
 
 
