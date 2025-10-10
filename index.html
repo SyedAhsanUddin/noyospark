@@ -1322,10 +1322,10 @@
         document.addEventListener('DOMContentLoaded', function () {
             
             // ---  3D Card Tilt Effect ---
-            const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-            
+            const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+
             function initCardTilt() {
-                if (isTouchDevice()) return;
+                if (!hasFinePointer) return;
 
                 const cards = document.querySelectorAll('.clay-card');
                 cards.forEach(card => {
@@ -1357,7 +1357,7 @@
             // Custom Cursor Logic (Desktop only)
             const cursorDot = document.querySelector('.cursor-dot');
             const cursorOutline = document.querySelector('.cursor-outline');
-            if (!isTouchDevice() && cursorDot && cursorOutline) {
+            if (hasFinePointer && cursorDot && cursorOutline) {
                 const hoverables = document.querySelectorAll('a, button, .cursor-pointer, .about-card, .playground-card');
                 let hasMoved = false;
 
@@ -1703,7 +1703,7 @@
 
             // --- Mobile Press Effect ---
             function initMobilePressEffects() {
-                if (!isTouchDevice()) return;
+                if (hasFinePointer) return;
 
                 const pressableElements = document.querySelectorAll(
                     '.about-card, .clay-card, .playground-accordion-item, .showcase-item'
